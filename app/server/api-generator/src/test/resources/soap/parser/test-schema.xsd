@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema targetNamespace="http://www.redhat.com/io/syndesis" blockDefault="#all" elementFormDefault="qualified"
+           version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.redhat.com/io/syndesis"
+           xml:lang="EN">
+
+    <xs:element name="stringElement" type="xs:string"/>
+
+    <xs:element name="annotatedElement" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                This element is annotated
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="simpleRestrictionElement">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="20"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="simpleExtensionElement">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string"/>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="simpleListElement">
+        <xs:simpleType>
+            <xs:list itemType="xs:string"/>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="simpleUnionElement">
+        <xs:simpleType>
+            <xs:union memberTypes="xs:string xs:date"/>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="facetsElement">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:length value="2"/>
+                <xs:minLength value="2"/>
+                <xs:maxLength value="2"/>
+                <xs:maxInclusive value="42"/>
+                <xs:minInclusive value="42"/>
+                <xs:maxExclusive value="43"/>
+                <xs:minExclusive value="41"/>
+                <xs:fractionDigits value="0"/>
+                <xs:totalDigits value="2"/>
+                <xs:pattern value="[0-9][0-9]"/>
+                <xs:whiteSpace value="collapse"/>
+                <xs:enumeration value="42"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:group name="elementGroup">
+        <xs:all>
+            <xs:element ref="tns:stringElement"/>
+            <xs:element ref="tns:annotatedElement"/>
+            <xs:element ref="tns:simpleRestrictionElement"/>
+            <xs:element ref="tns:simpleListElement"/>
+            <xs:element ref="tns:simpleUnionElement"/>
+            <xs:element ref="tns:simpleExtensionElement"/>
+            <xs:element ref="tns:facetsElement"/>
+        </xs:all>
+    </xs:group>
+
+    <xs:element name="groupElement">
+        <xs:complexType>
+            <xs:group ref="tns:elementGroup"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="simpleContentElement">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:restriction base="xs:dateTime"/>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="complexContentElement">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:restriction base="xs:date"/>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="simpleTypeString">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="simpleList">
+        <xs:list>
+            <xs:simpleType>
+                <xs:restriction base="tns:simpleTypeString"/>
+            </xs:simpleType>
+        </xs:list>
+    </xs:simpleType>
+
+    <xs:element name="simpleListWithAttributes">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="tns:simpleList">
+                    <xs:attribute name="attr" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="complexTypeString">
+        <xs:complexContent>
+            <xs:extension base="xs:string"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

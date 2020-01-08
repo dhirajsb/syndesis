@@ -1,0 +1,77 @@
+{
+  "actions": [],
+  "componentScheme": "cxf",
+  "configuredProperties": {
+    "componentName": "connector-soap-cxf"
+  },
+  "connectorCustomizers": [
+    "io.syndesis.connector.soap.cxf.SpecificationResourceCustomizer",
+    "io.syndesis.connector.soap.cxf.EndpointCustomizer"
+  ],
+  "connectorFactory": "io.syndesis.connector.soap.cxf.ConnectorFactory",
+  "dependencies": [
+    {
+      "id": "io.syndesis.connector:connector-soap-cxf:@project.version@",
+      "type": "MAVEN"
+    },
+    {
+      "id": "org.apache.camel:camel-cxf:@camel.version@",
+      "type": "MAVEN"
+    }
+  ],
+  "description": "Meta connector to generate SOAP CXF client connectors",
+  "icon": "",
+  "id": "soap-cxf",
+  "metadata": {
+    "hide-from-connection-pages": "true"
+  },
+  "name": "SOAP Client",
+  "properties": {
+    "address": {
+      "description": "SOAP Endpoint address from WSDL SOAP Binding or user specified.",
+      "displayName": "Address",
+      "javaType": "java.lang.String",
+      "order": 1,
+      "required": true,
+      "type": "string"
+    },
+    "specification": {
+      "description": "WSDL document defining the service.",
+      "displayName": "WSDL Document",
+      "javaType": "java.lang.String",
+      "required": true,
+      "type": "hidden"
+    },
+    "serviceName": {
+      "description": "Target service in WSDL.",
+      "displayName": "Service Name",
+      "javaType": "java.lang.String",
+      "required": true,
+      "type": "hidden"
+    },
+    "portName": {
+      "description": "Target Port in WSDL.",
+      "displayName": "Port Name",
+      "javaType": "java.lang.String",
+      "required": true,
+      "type": "hidden"
+    },
+    "username": {
+      "description": "Basic Authentication username.",
+      "displayName": "Username",
+      "javaType": "java.lang.String",
+      "order": 2,
+      "required": false,
+      "type": "string"
+    },
+    "password": {
+      "description": "Basic Authentication password.",
+      "displayName": "Password",
+      "javaType": "java.lang.String",
+      "order": 3,
+      "secret": true,
+      "required": false,
+      "type": "string"
+    }
+  }
+}

@@ -766,7 +766,7 @@
               <!--
                 Jakarta project shipped activation com.sun.activation:jakarta.activation-api:1.2.1
                 and jakarta.activation:jakarta.activation:1.2.1 containing the
-                com.sun.activation:jakarta.activation-api:1.2.1 within it 
+                com.sun.activation:jakarta.activation-api:1.2.1 within it
               -->
               <ignoredClassPattern>^javax\.activation\..*$</ignoredClassPattern>
             </ignoredClassPatterns>
@@ -1590,6 +1590,12 @@
 
       <dependency>
         <groupId>io.syndesis.connector</groupId>
+        <artifactId>connector-soap-cxf</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.syndesis.connector</groupId>
         <artifactId>connector-email</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -2204,6 +2210,12 @@
         <groupId>org.jboss.spec.javax.annotation</groupId>
         <artifactId>jboss-annotations-api_1.2_spec</artifactId>
         <version>1.0.2.Final</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>1.9.3</version>
       </dependency>
 
       <dependency>

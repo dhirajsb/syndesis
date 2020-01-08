@@ -65,8 +65,8 @@
       "icon": "assets:flow.svg",
       "id": "flow",
       "metadata": {
-        "hide-from-step-select": true,
-        "hide-from-connection-pages": true
+        "hide-from-connection-pages": true,
+        "hide-from-step-select": true
       },
       "name": "Flow"
     },
@@ -87,6 +87,7 @@
     "kind": "connection"
   },
   {
+    "condition": "#{getProperty('features.knative.enabled') == 'true'}",
     "data": {
       "configuredProperties": {},
       "connectorId": "knative",
@@ -98,8 +99,7 @@
       },
       "name": "Knative"
     },
-    "kind": "connection",
-    "condition": "#{getProperty('features.knative.enabled') == 'true'}"
+    "kind": "connection"
   },
   {
     "data": {
@@ -522,6 +522,161 @@
             "oauth-access-token-url"
           ],
           "type": "string"
+        }
+      }
+    },
+    "kind": "connector-template"
+  },
+  {
+    "data": {
+      "componentScheme": "soap-cxf",
+      "connectorGroup": {
+        "id": "soap-connector-template"
+      },
+      "connectorProperties": {
+        "address": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "SOAP Endpoint address from WSDL SOAP Binding or user specified.",
+          "displayName": "Address",
+          "group": "producer",
+          "javaType": "java.lang.String",
+          "kind": "property",
+          "label": "producer",
+          "order": 1,
+          "required": true,
+          "type": "string"
+        },
+        "password": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Basic Authentication password.",
+          "displayName": "Password",
+          "group": "producer",
+          "javaType": "java.lang.String",
+          "kind": "property",
+          "label": "producer",
+          "order": 3,
+          "required": false,
+          "secret": true,
+          "type": "string"
+        },
+        "portName": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Target Port in WSDL.",
+          "displayName": "Port Name",
+          "group": "producer",
+          "javaType": "java.lang.String",
+          "kind": "property",
+          "label": "producer",
+          "required": true,
+          "type": "hidden"
+        },
+        "serviceName": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Target service in WSDL.",
+          "displayName": "Service Name",
+          "group": "producer",
+          "javaType": "java.lang.String",
+          "kind": "property",
+          "label": "producer",
+          "required": true,
+          "type": "hidden"
+        },
+        "specification": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "WSDL document defining the service.",
+          "displayName": "WSDL Document",
+          "group": "producer",
+          "javaType": "java.lang.String",
+          "kind": "property",
+          "label": "producer",
+          "required": true,
+          "tags": [
+            "upload",
+            "url"
+          ],
+          "type": "hidden"
+        },
+        "username": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Basic Authentication username.",
+          "displayName": "Username",
+          "group": "producer",
+          "javaType": "java.lang.String",
+          "kind": "property",
+          "label": "producer",
+          "order": 2,
+          "required": false,
+          "type": "string"
+        }
+      },
+      "description": "SOAP Connector",
+      "icon": "fa-link",
+      "id": "soap-connector-template",
+      "name": "SOAP Connector",
+      "properties": {
+        "address": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "SOAP Endpoint address from WSDL SOAP Binding or user specified.",
+          "displayName": "Address",
+          "javaType": "java.lang.String",
+          "order": 1,
+          "required": true,
+          "type": "string"
+        },
+        "portName": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Target Port in WSDL.",
+          "displayName": "Port Name",
+          "javaType": "java.lang.String",
+          "required": true,
+          "type": "string"
+        },
+        "ports": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Ports found in WSDL.",
+          "displayName": "Ports",
+          "javaType": "java.lang.String",
+          "required": true,
+          "type": "string"
+        },
+        "serviceName": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Target service in WSDL.",
+          "displayName": "Service Name",
+          "javaType": "java.lang.String",
+          "required": true,
+          "type": "string"
+        },
+        "services": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "Services found in WSDL.",
+          "displayName": "Services",
+          "javaType": "java.lang.String",
+          "required": true,
+          "type": "string"
+        },
+        "specification": {
+          "componentProperty": true,
+          "deprecated": false,
+          "description": "WSDL document defining the service.",
+          "displayName": "WSDL Document",
+          "javaType": "java.lang.String",
+          "required": true,
+          "tags": [
+            "blob"
+          ],
+          "type": "file"
         }
       }
     },
